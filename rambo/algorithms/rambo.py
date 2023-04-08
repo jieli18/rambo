@@ -282,7 +282,6 @@ class RAMBO(RLAlgorithm):
         gt.stamp('epoch_train_model')
         ####
 
-
         # number of times to alternate between agent and adversary
         for outer in range(self._n_epochs // self._epoch_per_adv_update):
 

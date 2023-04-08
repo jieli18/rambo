@@ -16,12 +16,14 @@ def create_SQL_algorithm(variant, *args, **kwargs):
 
     return algorithm
 
+
 def create_RAMBO_algorithm(variant, *args, **kwargs):
     from rambo.algorithms.rambo import RAMBO
 
     algorithm = RAMBO(config=variant, *args, **kwargs)
 
     return algorithm
+
 
 ALGORITHM_CLASSES = {
     'SAC': create_SAC_algorithm,
@@ -38,6 +40,5 @@ def get_algorithm_from_variant(variant,
     algorithm_kwargs = deepcopy(algorithm_params['kwargs'])
     algorithm = ALGORITHM_CLASSES[algorithm_type](
         variant, *args, **algorithm_kwargs, **kwargs)
-
 
     return algorithm

@@ -15,6 +15,7 @@ logger.setLevel(logging.INFO)
 def cli():
     pass
 
+
 @cli.command(
     name='run_example',
     context_settings={'ignore_unknown_options': True})
@@ -23,10 +24,13 @@ def cli():
 def run_example_cmd(example_module_name, example_argv):
     return run_example(example_module_name, example_argv)
 
+
 cli.add_command(run_example_cmd)
+
 
 def main():
     return cli()
+
 
 if __name__ == "__main__":
     main()

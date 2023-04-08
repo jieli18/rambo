@@ -21,6 +21,7 @@ from pprint import pformat
 import pdb
 from softlearning.misc.utils import datetimestamp, PROJECT_PATH
 
+
 def _normalize_trial_resources(resources, cpu, gpu, extra_cpu, extra_gpu):
     if resources is None:
         resources = {}
@@ -129,14 +130,14 @@ def confirm_yes_no(prompt):
 
 def run_example(example_module_name, example_argv, local_mode=False):
     """Run example locally, potentially parallelizing across cpus/gpus."""
-    example_module = importlib.import_module(example_module_name)
+    example_module = importlib.import_module(example_module_name)  # <module 'examples.development' from 'development/__init__.py'>
 
     example_args = example_module.get_parser().parse_args(example_argv)
     variant_spec = example_module.get_variant_spec(example_args)
 
     variant_spec['environment_params']['evaluation'] = variant_spec['environment_params']['training']
 
-    trainable_class = example_module.get_experiment(example_args)
+    trainable_class = example_module.get_experiment(example_args)  # <class 'examples.development.main.Experiment'>
 
     experiment_id, experiment = generate_experiment(
         trainable_class, variant_spec, example_args)
